@@ -1,0 +1,19 @@
+name: Test Docker Build
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - feature/*  # (optionnel) si tu veux tester aussi les branches feature
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Build Docker image
+        run: docker build -t testimage .
